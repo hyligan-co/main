@@ -3,17 +3,23 @@ package org.example.services.FriendService;
 import org.example.controller.Friend.FriendRequest;
 import org.example.entity.User;
 import org.example.repository.FriendRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public class FriendService implements FriendSrvc {
 
+    private final FriendRepository friendRepository;
+
+    @Autowired
     public FriendService(FriendRepository friendRepository) {
+        this.friendRepository = friendRepository;
     }
 
     @Override //список дрзів юзера
     public List<User> getFriends(Long userId) {
+
         return null;
     }
 
