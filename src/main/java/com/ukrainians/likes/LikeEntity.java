@@ -1,4 +1,4 @@
-package org.example.likes;
+package com.ukrainians.likes;
 
 import jakarta.persistence.*;
 import lombok.Data;
