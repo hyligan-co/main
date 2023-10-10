@@ -1,11 +1,11 @@
-package org.example.services.FriendService;
+package com.ukrainians.services.FriendService;
 
-import org.example.controller.Friend.FriendRequest;
-import org.example.entity.User;
+import com.ukrainians.controller.Friend.FriendRequest;
+import com.ukrainians.entity.User;
 
 import java.util.List;
 
-public interface FriendSrvc {
+public interface FriendService {
     List<User> getFriends(Long userId);
     void deleteFriends(Long userId);
     void sendFriendRequest(FriendRequest friendRequest);

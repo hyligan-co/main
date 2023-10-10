@@ -1,16 +1,16 @@
-package org.example.services.message;
+package com.ukrainians.services.message;
 
-import org.example.entity.Message;
-import org.example.repository.MessageRepository;
+import com.ukrainians.repository.MessageRepository;
+import com.ukrainians.entity.Message;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class MessageService implements MessageSrvc {
+public class MessageServiceImpl implements MessageService {
     private final MessageRepository messageRepository;
 
-    public MessageService(MessageRepository messageRepository) {
+    public MessageServiceImpl(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }
 
@@ -52,7 +52,6 @@ public class MessageService implements MessageSrvc {
 
     @Override
     public void deleteById(Long messageId) {
-
     }
 
 

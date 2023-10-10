@@ -1,11 +1,10 @@
-package org.example.services.message;
+package com.ukrainians.services.message;
 
-import org.example.entity.Message;
-import org.springframework.http.ResponseEntity;
+import com.ukrainians.entity.Message;
 
 import java.util.List;
 
-public interface MessageSrvc {
+public interface MessageService {
     Message sendMessage(Message message);
     Message getMessageById(Long messageId);
     public List<Message> getInboxMessages(Long userId);

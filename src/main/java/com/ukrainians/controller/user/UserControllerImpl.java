@@ -1,7 +1,7 @@
-package org.example.controller.user;
+package com.ukrainians.controller.user;
 
-import org.example.entity.User;
-import org.example.repository.UsersRepository;
+import com.ukrainians.repository.UsersRepository;
+import com.ukrainians.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,26 +9,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
-public class UserController implements UserCntr{
+public class UserControllerImpl implements UserController {
 
     @Autowired
     private UsersRepository userRepository;
 
     @Override
-    @GetMapping("/{id}") //сторінка юзера
-    public User getUser(@PathVariable Long id){
+    public User getUser(@PathVariable Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
     @Override
-    @PostMapping("/create")//створити юзера
-    public User createUser(@RequestBody User user){
+    public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
 
     @Override
-    @PostMapping("/{id}/update")//оновити юзера
     public ResponseEntity<Object> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
         Optional<User> optionalUser = userRepository.findById(id);
 
@@ -38,8 +34,6 @@ public class UserController implements UserCntr{
         }
 
         User existingUser = optionalUser.get();
-
-
         // existingUser.setEmail(updatedUser.getEmail()); дописати поля на оновлення
 
         // зберігання користувача
@@ -50,9 +44,8 @@ public class UserController implements UserCntr{
     }
 
     @Override
-    @DeleteMapping("/{id}/delete")//деактивувати юзера
-    public ResponseEntity<Object> deactivateUser(@PathVariable Long id) {
-        Optional<User> optionalUser  = userRepository.findById(id);
+       public ResponseEntity<Object> deactivateUser(@PathVariable Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
 
         if (!optionalUser.isPresent()) {
             // Якщо користувача з вказаним id не знайдено, поверніть HTTP статус 404 (Not Found).
