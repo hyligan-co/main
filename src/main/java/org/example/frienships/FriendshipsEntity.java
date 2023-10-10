@@ -1,9 +1,11 @@
 package org.example.frienships;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name = "friendships")
 public class FriendshipsEntity {
@@ -26,5 +28,4 @@ public class FriendshipsEntity {
     @Column(name = "timestamp")
     private Date timestamp;
 
-    // Геттери і сеттери
 }
