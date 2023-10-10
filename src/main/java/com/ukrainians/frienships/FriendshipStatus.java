@@ -1,4 +1,4 @@
-package org.example.frienships;
+package com.ukrainians.frienships;
 
 public enum FriendshipStatus {
     PENDING,

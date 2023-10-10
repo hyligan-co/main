@@ -1,4 +1,4 @@
-package org.example.frienships;
+package com.ukrainians.frienships;
 
 import jakarta.persistence.*;
 import lombok.Data;
