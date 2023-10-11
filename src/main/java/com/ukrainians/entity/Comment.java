@@ -3,7 +3,6 @@ package com.ukrainians.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.sql.Timestamp;
 
 @Data
