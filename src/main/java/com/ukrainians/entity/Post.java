@@ -9,7 +9,6 @@ import java.util.Date;
 @Data
 @Table(name ="POST")
 public class Post {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_id")
@@ -24,5 +23,4 @@ public class Post {
 
     @Column(name = "TIMESTAMP")
     private Date timestamp;
-
 }
