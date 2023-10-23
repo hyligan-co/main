@@ -1,4 +1,4 @@
-package com.ukrainians.controller.registration;
+package com.ukrainians.controller;
 
 import com.ukrainians.dto.UserInfoRequest;
 import com.ukrainians.dto.UserInfoResponse;

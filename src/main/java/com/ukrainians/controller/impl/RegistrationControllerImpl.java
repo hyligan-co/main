@@ -1,6 +1,6 @@
-package com.ukrainians.controller.registration.impl;
+package com.ukrainians.controller.impl;
 
-import com.ukrainians.controller.registration.RegistrationController;
+import com.ukrainians.controller.RegistrationController;
 import com.ukrainians.dto.UserInfoRequest;
 import com.ukrainians.dto.UserInfoResponse;
 import com.ukrainians.services.registration.RegistrationService;
