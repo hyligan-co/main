@@ -8,7 +8,7 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name ="POST")
-public class Post {
+public class PostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_id")
@@ -16,7 +16,7 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private UserEntity user;
 
     @Column(name = "CONTENT", nullable = false, columnDefinition = "TEXT")
     private String content;
