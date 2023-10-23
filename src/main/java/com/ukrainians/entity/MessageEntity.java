@@ -5,9 +5,11 @@ import lombok.Data;
 
 import java.util.Date;
 
+import static com.ukrainians.utils.Constants.UKRAINIANS;
+
 @Data
 @Entity
-@Table(name = "MESSAGES")
+@Table(name = "MESSAGES", schema = UKRAINIANS)
 public class MessageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
