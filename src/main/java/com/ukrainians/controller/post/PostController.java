@@ -1,6 +1,6 @@
 package com.ukrainians.controller.post;
 
-import com.ukrainians.entity.Post;
+import com.ukrainians.entity.PostEntity;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public interface PostController {
     @PostMapping(value = "/create")
     @ResponseBody
-    ResponseEntity<?> createPost(@Valid @RequestBody Post post, BindingResult bindingResult);
+    ResponseEntity<?> createPost(@Valid @RequestBody PostEntity post, BindingResult bindingResult);
 }

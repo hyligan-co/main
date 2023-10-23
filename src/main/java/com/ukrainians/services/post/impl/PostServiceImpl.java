@@ -1,6 +1,6 @@
 package com.ukrainians.services.post.impl;
 
-import com.ukrainians.entity.Post;
+import com.ukrainians.entity.PostEntity;
 import com.ukrainians.repository.PostRepository;
 import com.ukrainians.services.post.PostService;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +17,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post save(Post post) {
+    public PostEntity save(PostEntity post) {
         post.setCreatedAt(new Timestamp(new Date().getTime()));
         return postRepository.save(post);
     }

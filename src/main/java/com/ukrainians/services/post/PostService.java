@@ -1,7 +1,7 @@
 package com.ukrainians.services.post;
 
-import com.ukrainians.entity.Post;
+import com.ukrainians.entity.PostEntity;
 
 public interface PostService {
-    Post save(Post post);
+    PostEntity save(PostEntity post);
 }
