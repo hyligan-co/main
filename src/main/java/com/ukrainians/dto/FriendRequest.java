@@ -1,4 +1,4 @@
-package com.ukrainians.controller.Friend;
+package com.ukrainians.dto;
 
 import lombok.Data;
 import lombok.ToString;

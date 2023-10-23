@@ -1,7 +1,8 @@
-package com.ukrainians.services.message;
+package com.ukrainians.services.impl;
 
 import com.ukrainians.repository.MessageRepository;
-import com.ukrainians.entity.Message;
+import com.ukrainians.entity.MessageEntity;
+import com.ukrainians.services.MessageService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,37 +16,37 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Message sendMessage(Message message) {
+    public MessageEntity sendMessage(MessageEntity message) {
         //відправки повідомлення
         return null;
     }
 
     @Override
-    public Message getMessageById(Long messageId) {
+    public MessageEntity getMessageById(Long messageId) {
         //отримання повідомлення за ід
         return null;
     }
 
     @Override
-    public List<Message> getInboxMessages(Long userId) {
+    public List<MessageEntity> getInboxMessages(Long userId) {
         //отримання вхідних повідомлень користувача
         return null;
     }
 
     @Override
-    public List<Message> getOutboxMessages(Long userId) {
+    public List<MessageEntity> getOutboxMessages(Long userId) {
         //отримання вихідних повідомлень користувача
         return null;
     }
 
     @Override
-    public List<Message> getConversations(Long userId) {
+    public List<MessageEntity> getConversations(Long userId) {
         //отримання діалогів юзера
         return null;
     }
 
     @Override
-    public Message updateMessage(Long messageId, Message updatedMessage) {
+    public MessageEntity updateMessage(Long messageId, MessageEntity updatedMessage) {
         //оновлення діалогу
         return null;
     }

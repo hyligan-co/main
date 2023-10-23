@@ -1,8 +1,9 @@
-package com.ukrainians.services.FriendService;
+package com.ukrainians.services.impl;
 
-import com.ukrainians.controller.Friend.FriendRequest;
+import com.ukrainians.dto.FriendRequest;
 import com.ukrainians.repository.FriendRepository;
-import com.ukrainians.entity.User;
+import com.ukrainians.entity.UserEntity;
+import com.ukrainians.services.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override //список дрзів юзера
-    public List<User> getFriends(Long userId) {
+    public List<UserEntity> getFriends(Long userId) {
         return null;
     }
 

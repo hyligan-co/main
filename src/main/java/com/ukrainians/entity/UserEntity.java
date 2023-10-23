@@ -7,11 +7,13 @@ import org.hibernate.annotations.Where;
 
 import java.util.Date;
 
+import static com.ukrainians.utils.Constants.UKRAINIANS;
+
 @Entity
-@Table(name = "USERS")
+@Table(name = "USERS", schema = UKRAINIANS)
 @Where(clause = "DELETED = 1")
 @Data
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

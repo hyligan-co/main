@@ -1,5 +1,6 @@
-package org.example.likes;
+package com.ukrainians.repository;
 
+import com.ukrainians.entity.LikeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

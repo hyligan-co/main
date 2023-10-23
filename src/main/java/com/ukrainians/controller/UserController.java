@@ -1,19 +1,19 @@
-package com.ukrainians.controller.user;
+package com.ukrainians.controller;
 
-import com.ukrainians.entity.User;
+import com.ukrainians.entity.UserEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/user")
 public interface UserController {
     @GetMapping("/{id}")//сторінка юзера
-    User getUser(@PathVariable Long id);
+    UserEntity getUser(@PathVariable Long id);
 
     @PostMapping("/create")//створити юзера
-    User createUser(@RequestBody User user);
+    UserEntity createUser(@RequestBody UserEntity user);
 
     @PostMapping("/{id}/update")//оновити юзера
-    ResponseEntity<Object> updateUser(@PathVariable Long id, @RequestBody User updatedUser);
+    ResponseEntity<Object> updateUser(@PathVariable Long id, @RequestBody UserEntity updatedUser);
 
     @DeleteMapping("/{id}/delete")//деактивувати юзера
     public ResponseEntity<Object> deactivateUser(@PathVariable Long id);

@@ -1,6 +1,7 @@
-package com.ukrainians.controller.Friend;
+package com.ukrainians.controller;
 
-import com.ukrainians.entity.User;
+import com.ukrainians.dto.FriendRequest;
+import com.ukrainians.entity.UserEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 @RequestMapping("/friends")
 public interface FriendController {
     @GetMapping("/{userId}") //список друзів
-    public List<User> getFriends(@PathVariable Long userId);
+    public List<UserEntity> getFriends(@PathVariable Long userId);
 
     @PostMapping("/send") // надіслати запит на додавання
     public ResponseEntity<Object> sendFriendRequest(@RequestBody FriendRequest friendRequest);

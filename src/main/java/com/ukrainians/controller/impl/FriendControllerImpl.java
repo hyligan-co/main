@@ -1,7 +1,9 @@
-package com.ukrainians.controller.Friend;
+package com.ukrainians.controller.impl;
 
-import com.ukrainians.entity.User;
-import com.ukrainians.services.FriendService.FriendServiceImpl;
+import com.ukrainians.dto.FriendRequest;
+import com.ukrainians.controller.FriendController;
+import com.ukrainians.entity.UserEntity;
+import com.ukrainians.services.impl.FriendServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +17,7 @@ public class FriendControllerImpl implements FriendController {
     private FriendServiceImpl friendService;
 
     @Override
-    public List<User> getFriends(@PathVariable Long userId) {
+    public List<UserEntity> getFriends(@PathVariable Long userId) {
         return friendService.getFriends(userId);
     }
 
