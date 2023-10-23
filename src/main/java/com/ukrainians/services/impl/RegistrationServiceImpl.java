@@ -1,11 +1,13 @@
-package com.ukrainians.services.registration.impl;
+package com.ukrainians.services.impl;
 
-import com.ukrainians.dto.UserInfoRequest;
+import com.ukrainians.entity.UserInfoEntity;
 import com.ukrainians.dto.UserInfoResponse;
 import com.ukrainians.repository.RegistrationRepository;
-import com.ukrainians.services.registration.RegistrationService;
+import com.ukrainians.services.RegistrationService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
@@ -20,13 +22,13 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-    public UserInfoResponse register(UserInfoRequest userInfoRequest) {
-        boolean userNameExist = registrationRepository.existsUserInfoRequestByNickName(userInfoRequest.getNickName());
-        boolean emailExist = registrationRepository.existsUserInfoRequestByEmail(userInfoRequest.getEmail());
+    public UserInfoResponse register(UserInfoEntity userInfoRequest) {
+        Optional<String> nickName = registrationRepository.existsByNickName(userInfoRequest.getNickName());
+        Optional<String> email = registrationRepository.existsByEmail(userInfoRequest.getEmail());
 
-        if (userNameExist || emailExist) {
+        if (nickName.isPresent() || email.isPresent()) {
             return UserInfoResponse.builder()
-                    .error(getCorrectError(userInfoRequest, userNameExist))
+                    .error(getCorrectError(userInfoRequest, nickName))
                     .build();
         }
 
@@ -38,12 +40,12 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .build();
     }
 
-    private static String getCorrectError(UserInfoRequest request, boolean existParam) {
-        final String userNameTaken = String.format("Username %s already taken",
+    private static String getCorrectError(UserInfoEntity request, Optional<String> anyInfo) {
+        final String nickNameTaken = String.format("Username %s already taken",
                 request.getNickName());
         final String emailTaken = String.format("Email %s already taken",
                 request.getEmail());
-        return existParam ? userNameTaken : emailTaken;
+        return anyInfo.isPresent() ? nickNameTaken : emailTaken;
     }
 
 }
