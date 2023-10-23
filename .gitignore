@@ -1,0 +1,7 @@
+.gradle/
+.idea/
+gradle/
+.gradle/8.2/
+.gradle/8.3/
+.gradle/buildOutputCleanup/
+.gradle/vcs-1/
