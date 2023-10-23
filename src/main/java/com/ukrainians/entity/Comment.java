@@ -16,11 +16,11 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private User user;
+    private UserEntity user;
 
     @ManyToOne
     @JoinColumn(name = "post_id", referencedColumnName = "post_id")
-    private Post post;
+    private PostEntity post;
 
     @Column(name = "content", nullable = false, columnDefinition = "TEXT")
     private String content;
