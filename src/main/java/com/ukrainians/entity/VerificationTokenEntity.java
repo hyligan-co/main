@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 
 import static com.ukrainians.utils.Constants.UKRAINIANS;
@@ -28,11 +27,17 @@ public class VerificationTokenEntity {
     @OneToOne(targetEntity = UserInfoEntity.class,
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false, name = "NICK_NAME")
+    @JoinColumn(nullable = false, name = "NICK_NAME", referencedColumnName = "NICK_NAME")
     private UserInfoEntity userInfo;
 
 
-    public VerificationTokenEntity() {
+    public VerificationTokenEntity(String token, UserInfoEntity userInfo) {
         this.expiryDate = LocalDateTime.now().plusDays(1);
+        this.token = token;
+        this.userInfo = userInfo;
+    }
+
+    public VerificationTokenEntity() {
+
     }
 }

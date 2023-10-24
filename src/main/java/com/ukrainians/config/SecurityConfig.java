@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
                         .requestMatchers(
-                                AntPathRequestMatcher.antMatcher("/registration"),
+                                AntPathRequestMatcher.antMatcher("/registration/**"),
                                 AntPathRequestMatcher.antMatcher("/login")
                         ).permitAll()
                         .anyRequest().authenticated()
