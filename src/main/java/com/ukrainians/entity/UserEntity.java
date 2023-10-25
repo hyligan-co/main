@@ -36,4 +36,13 @@ public class UserEntity {
     @Column(name = "UPDATE_DATE")
     private Date updateDate;
 
+    @Column(name = "BIO")
+    private String bio;
+
+    @Column(name = "AVATAR_URL")
+    private String avatar_url;
+
+    @Column(name = "COVER_PHOTO_URL")
+    private String cover_photo_url;
+
 }
