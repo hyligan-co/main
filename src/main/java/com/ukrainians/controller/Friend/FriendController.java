@@ -11,8 +11,8 @@ public interface FriendController {
     @GetMapping("/{userId}") //список друзів
     public List<User> getFriends(@PathVariable Long userId);
 
-    @PostMapping("/send") // надіслати запит на додавання
-    public ResponseEntity<Object> sendFriendRequest(@RequestBody FriendRequest friendRequest);
+    @PostMapping("/{user_id}/friend-requests") // надіслати запит на додавання
+    public ResponseEntity<Object> sendFriendRequest(@PathVariable Long user_id, @RequestBody FriendRequest friendRequest);
 
     @DeleteMapping("/delete") // видалити друга
     public ResponseEntity<Object> deleteFriend(@PathVariable Long userId);
