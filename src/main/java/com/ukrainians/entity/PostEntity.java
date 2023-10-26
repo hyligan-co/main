@@ -3,6 +3,7 @@ package com.ukrainians.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -23,4 +24,7 @@ public class PostEntity {
 
     @Column(name = "TIMESTAMP")
     private Date timestamp;
+
+    @Column(name = "created_at")
+    private Timestamp createdAt;
 }
