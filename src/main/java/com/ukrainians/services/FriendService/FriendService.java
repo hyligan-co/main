@@ -1,6 +1,6 @@
 package com.ukrainians.services.FriendService;
 
-import com.ukrainians.controller.Friend.FriendRequest;
+import com.ukrainians.entity.FriendRequest;
 import com.ukrainians.entity.User;
 
 import java.util.List;

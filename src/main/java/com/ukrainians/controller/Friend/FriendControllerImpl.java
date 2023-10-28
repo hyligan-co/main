@@ -1,5 +1,6 @@
 package com.ukrainians.controller.Friend;
 
+import com.ukrainians.entity.FriendRequest;
 import com.ukrainians.entity.User;
 import com.ukrainians.exeption.ApiResponse;
 import com.ukrainians.services.FriendService.FriendServiceImpl;

@@ -1,5 +1,6 @@
 package com.ukrainians.controller.Friend;
 
+import com.ukrainians.entity.FriendRequest;
 import com.ukrainians.entity.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
