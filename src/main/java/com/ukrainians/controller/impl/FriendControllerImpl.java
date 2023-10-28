@@ -3,8 +3,10 @@ package com.ukrainians.controller.impl;
 import com.ukrainians.dto.FriendRequest;
 import com.ukrainians.controller.FriendController;
 import com.ukrainians.entity.UserEntity;
+import com.ukrainians.message.ApiResponse;
 import com.ukrainians.services.impl.FriendServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +24,14 @@ public class FriendControllerImpl implements FriendController {
     }
 
     @Override
-    public ResponseEntity<Object> sendFriendRequest(@RequestBody FriendRequest friendRequest) {
-        friendService.sendFriendRequest(friendRequest);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Object> sendFriendRequest(@PathVariable Long user_id, @RequestBody FriendRequest friendRequest) {
+        boolean requestSent = friendService.sendFriendRequest(user_id, friendRequest);
+
+        if (requestSent) {
+            return ResponseEntity.ok(new ApiResponse("Friend request sent successfully."));
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse("Friend request already sent or user does not exist."));
+        }
     }
 
     @Override
