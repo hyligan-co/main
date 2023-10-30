@@ -29,9 +29,13 @@ public class FriendServiceImpl implements FriendService {
 
     @Override
     public List<UserEntity> getFriends(Long userId) {
-        List<FriendshipsEntity> friendships = friendRepository.findAllByRequesterIdOrSupplierIdAndStatus(userId, userId, FriendshipStatus.ACCEPTED);
+        List<FriendshipsEntity> friendships = friendRepository.findAllByRequesterIdOrSupplierIdAndStatus(
+                userId,
+                userId,
+                FriendshipStatus.ACCEPTED);
 
-        List<Long> friendIds = friendships.stream()
+        List<Long> friendIds = friendships
+                .stream()
                 .map(friendship -> {
                     if (friendship.getRequester().getId().equals(userId)) {
                         return friendship.getSupplier().getId();
