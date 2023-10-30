@@ -23,7 +23,7 @@ public class SesConfig {
     private String region;
 
     @Bean
-    public AmazonSimpleEmailService amazonSimpleEmailService(){
+    public AmazonSimpleEmailService amazonSimpleEmailService() {
         BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
         return AmazonSimpleEmailServiceClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))

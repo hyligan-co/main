@@ -1,18 +1,20 @@
 package com.ukrainians.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Where;
 
-
 import java.util.Date;
+import java.util.Objects;
 
 import static com.ukrainians.utils.Constants.UKRAINIANS;
 
 @Entity
 @Table(name = "USERS", schema = UKRAINIANS)
 @Where(clause = "DELETED = 1")
-@Data
+@Setter
+@Getter
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,4 +47,33 @@ public class UserEntity {
     @Column(name = "COVER_PHOTO_URL")
     private String cover_photo_url;
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(nickName, that.nickName) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(deleted, that.deleted) && Objects.equals(createDate, that.createDate) && Objects.equals(updateDate, that.updateDate) && Objects.equals(bio, that.bio) && Objects.equals(avatar_url, that.avatar_url) && Objects.equals(cover_photo_url, that.cover_photo_url);
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", nickName='" + nickName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", deleted=" + deleted +
+                ", createDate=" + createDate +
+                ", updateDate=" + updateDate +
+                ", bio='" + bio + '\'' +
+                ", avatar_url='" + avatar_url + '\'' +
+                ", cover_photo_url='" + cover_photo_url + '\'' +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nickName, firstName, lastName, deleted, createDate, updateDate, bio, avatar_url, cover_photo_url);
+    }
 }

@@ -1,13 +1,17 @@
 package com.ukrainians.frienships;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ukrainians.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
 
+import static com.ukrainians.utils.Constants.UKRAINIANS;
+
 @Data
 @Entity
-@Table(name = "friendships")
+@Table(name = "friendships", schema = UKRAINIANS)
 public class FriendshipsEntity {
 
     @Id
@@ -15,11 +19,17 @@ public class FriendshipsEntity {
     @Column(name = "friendship_id")
     private Long friendshipId;
 
-    @Column(name = "user1_id")
-    private Long user1Id;
 
-    @Column(name = "user2_id")
-    private Long user2Id;
+    @ManyToOne
+    @JoinColumn(name = "user1_id", referencedColumnName = "id")
+    @JsonIgnore
+    private UserEntity requester;
+
+
+    @ManyToOne
+    @JoinColumn(name = "user2_id", referencedColumnName = "id")
+    @JsonIgnore
+    private UserEntity supplier;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")

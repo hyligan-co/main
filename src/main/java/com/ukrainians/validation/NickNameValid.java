@@ -16,6 +16,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public @interface NickNameValid {
 
     String message() default "Username must contain at least 3 characters, without spaces";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

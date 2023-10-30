@@ -6,9 +6,11 @@ import lombok.Data;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import static com.ukrainians.utils.Constants.UKRAINIANS;
+
 @Entity
 @Data
-@Table(name ="POST")
+@Table(name = "POST", schema = UKRAINIANS)
 public class PostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
