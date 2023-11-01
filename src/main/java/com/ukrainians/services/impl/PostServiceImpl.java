@@ -5,6 +5,7 @@ import com.ukrainians.entity.UserEntity;
 import com.ukrainians.repository.PostRepository;
 import com.ukrainians.services.FriendService;
 import com.ukrainians.services.PostService;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@RestController
+@Service
 public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
     private final FriendService friendService;
