@@ -2,6 +2,7 @@ package com.ukrainians.services.impl;
 
 import com.ukrainians.dto.FriendRequest;
 import com.ukrainians.entity.UserEntity;
+import com.ukrainians.exceptions.FriendsNotFoundException;
 import com.ukrainians.frienships.FriendshipStatus;
 import com.ukrainians.frienships.FriendshipsEntity;
 import com.ukrainians.frienships.FriendshipsRepository;
@@ -35,8 +36,10 @@ public class FriendServiceImpl implements FriendService {
                 .map(friendship -> {
                     if (friendship.getRequester().getId().equals(userId)) {
                         return friendship.getSupplier().getId();
-                    } else {
+                    } else if (friendship.getSupplier().getId().equals(userId)){
                         return friendship.getRequester().getId();
+                    }else {
+                        throw new FriendsNotFoundException(String.format("Friends not found for user id %s", userId));
                     }
                 })
                 .toList();
