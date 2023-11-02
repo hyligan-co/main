@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface FriendshipsRepository extends JpaRepository<FriendshipsEntity, Long> {
-    List<FriendshipsEntity> findAllByRequesterIdOrSupplierIdAndStatus(Long requesterId, Long supplierId, FriendshipStatus status);
+    List<FriendshipsEntity> findAllByRequesterIdOrReceiverIdAndStatus(Long requesterId, Long supplierId, FriendshipStatus status);
 }

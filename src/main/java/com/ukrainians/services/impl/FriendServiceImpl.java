@@ -26,7 +26,7 @@ public class FriendServiceImpl implements FriendService {
 
     @Override
     public List<UserEntity> getFriends(Long userId) {
-        List<FriendshipsEntity> friendships = friendRepository.findAllByRequesterIdOrSupplierIdAndStatus(
+        List<FriendshipsEntity> friendships = friendRepository.findAllByRequesterIdOrReceiverIdAndStatus(
                 userId,
                 userId,
                 FriendshipStatus.ACCEPTED);
