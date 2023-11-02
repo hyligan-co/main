@@ -3,11 +3,14 @@ package com.ukrainians.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Timestamp;
 import java.util.Date;
+
+import static com.ukrainians.utils.Constants.UKRAINIANS;
 
 @Entity
 @Data
-@Table(name ="POST")
+@Table(name = "POST", schema = UKRAINIANS)
 public class PostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +26,7 @@ public class PostEntity {
 
     @Column(name = "TIMESTAMP")
     private Date timestamp;
+
+    @Column(name = "created_at")
+    private Timestamp createdAt;
 }

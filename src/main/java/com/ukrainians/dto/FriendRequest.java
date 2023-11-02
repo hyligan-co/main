@@ -8,5 +8,4 @@ import lombok.ToString;
 public class FriendRequest {
     private Long senderUserId;
     private Long receiverUserId;
-
 }

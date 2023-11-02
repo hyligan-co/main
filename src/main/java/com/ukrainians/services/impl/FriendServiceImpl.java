@@ -1,26 +1,50 @@
 package com.ukrainians.services.impl;
 
 import com.ukrainians.dto.FriendRequest;
-import com.ukrainians.repository.FriendRepository;
 import com.ukrainians.entity.UserEntity;
+import com.ukrainians.exceptions.FriendsNotFoundException;
+import com.ukrainians.frienships.FriendshipStatus;
+import com.ukrainians.frienships.FriendshipsEntity;
+import com.ukrainians.frienships.FriendshipsRepository;
 import com.ukrainians.services.FriendService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.ukrainians.services.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class FriendServiceImpl implements FriendService {
 
-    private final FriendRepository friendRepository;
+    private final FriendshipsRepository friendRepository;
+    private final UserService userService;
 
-    @Autowired
-    public FriendServiceImpl(FriendRepository friendRepository) {
+    public FriendServiceImpl(FriendshipsRepository friendRepository, UserService userService) {
         this.friendRepository = friendRepository;
+        this.userService = userService;
+
     }
 
-    @Override //список дрзів юзера
+    @Override
     public List<UserEntity> getFriends(Long userId) {
-        return null;
+        List<FriendshipsEntity> friendships = friendRepository.findAllByRequesterIdOrReceiverIdAndStatus(
+                userId,
+                userId,
+                FriendshipStatus.ACCEPTED);
+
+        List<Long> friendIds = friendships
+                .stream()
+                .map(friendship -> {
+                    if (friendship.getRequester().getId().equals(userId)) {
+                        return friendship.getReceiver().getId();
+                    } else if (friendship.getReceiver().getId().equals(userId)){
+                        return friendship.getRequester().getId();
+                    }else {
+                        throw new FriendsNotFoundException(String.format("Friends not found for user id %s", userId));
+                    }
+                })
+                .toList();
+
+        return userService.findAllById(friendIds);
     }
 
 
