@@ -8,7 +8,7 @@ import com.ukrainians.services.PostService;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -31,16 +31,15 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostEntity> findAllPostsById(Long id) {
-        List<PostEntity> posts = new ArrayList<>();
         List<UserEntity> friends = friendService.getFriends(id);
-        for (UserEntity friend : friends) {
-            List<PostEntity> allByUserId = postRepository.findAllByUserId(friend.getId())
-                    .stream()
-                    .filter(it -> it.getContent() != null)
-                    .toList();
-            posts.addAll(allByUserId);
-        }
-        return posts;
+        return friends.stream()
+                .map(friend -> postRepository.findAllByUserId(friend.getId())
+                        .stream()
+                        .filter(it -> it.getContent() != null)
+                        .toList()
+                )
+                .flatMap(Collection::stream)
+                .toList();
     }
 
 
