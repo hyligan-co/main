@@ -29,7 +29,7 @@ public class FriendshipsEntity {
     @ManyToOne
     @JoinColumn(name = "user2_id", referencedColumnName = "id")
     @JsonIgnore
-    private UserEntity supplier;
+    private UserEntity receiver;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")

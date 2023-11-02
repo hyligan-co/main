@@ -35,8 +35,8 @@ public class FriendServiceImpl implements FriendService {
                 .stream()
                 .map(friendship -> {
                     if (friendship.getRequester().getId().equals(userId)) {
-                        return friendship.getSupplier().getId();
-                    } else if (friendship.getSupplier().getId().equals(userId)){
+                        return friendship.getReceiver().getId();
+                    } else if (friendship.getReceiver().getId().equals(userId)){
                         return friendship.getRequester().getId();
                     }else {
                         throw new FriendsNotFoundException(String.format("Friends not found for user id %s", userId));
