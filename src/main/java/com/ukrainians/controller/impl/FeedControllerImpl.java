@@ -19,13 +19,13 @@ public class FeedControllerImpl implements FeedController {
 
     @Override
     public @ResponseBody List<PostResponse> getFeeds(Long id) {
-        List<PostResponse> postResponses = new java.util.ArrayList<>(postService.findAllPostsById(id)
+        List<PostResponse> postResponses = new java.util.ArrayList<>(postService.findAllPostsById(id))
                 .stream()
                 .map(post -> new PostResponse(post.getId(),
                         post.getUser().getId(),
                         post.getContent(),
                         post.getCreatedAt()))
-                .toList());
+                .toList();
         postResponses.sort(Comparator.comparing(PostResponse::getTimestamp));
         return postResponses;
     }

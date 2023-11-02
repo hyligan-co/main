@@ -6,7 +6,6 @@ import com.ukrainians.repository.PostRepository;
 import com.ukrainians.services.FriendService;
 import com.ukrainians.services.PostService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
